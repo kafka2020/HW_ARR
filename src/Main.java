@@ -8,7 +8,25 @@ public class Main {
 
         showMenu(products, prices);
         dialogCustomer(counters);
-//        calcResults(products, prices, counters);
+        calcResults(products, prices, counters);
+    }
+
+    private static void calcResults(String[] products, int[] prices, int[] counters) {
+        System.out.println("\nВаша корзина:");
+        int totalPrice = 0;
+        for (int i = 0; i < products.length; i++) {
+            if (counters[i] > 0) {
+                int currentPrice = prices[i] * counters[i];
+                totalPrice += currentPrice;
+                System.out.printf("%s %d шт %d руб/шт %d руб в сумме\n",
+                        products[i],
+                        counters[i],
+                        prices[i],
+                        currentPrice
+                );
+            }
+        }
+        System.out.printf("Итого %d руб\n", totalPrice);
     }
 
     private static void dialogCustomer(int[] counters) {
@@ -36,7 +54,7 @@ public class Main {
                     products[i],
                     prices[i]
             );
-            
+
         }
     }
 }
