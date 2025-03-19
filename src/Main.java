@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
         String[] products = {"Хлеб", "Яблоки", "Молоко", "Гречка"};
@@ -5,8 +7,25 @@ public class Main {
         int[] counters = new int[products.length];
 
         showMenu(products, prices);
-//        dialogCustomer(counters);
+        dialogCustomer(counters);
 //        calcResults(products, prices, counters);
+    }
+
+    private static void dialogCustomer(int[] counters) {
+        Scanner sc = new Scanner(System.in);
+        while (true) {
+            System.out.println("Выберите товар и количество или введите `end`");
+            String answer = sc.nextLine();
+            if ("end".equals(answer)) {
+                break;
+            }
+
+            String[] splittedAnswer = answer.split(" ");
+            int productPosition = Integer.parseInt(splittedAnswer[0]) - 1;
+            int productCount = Integer.parseInt(splittedAnswer[1]);
+
+            counters[productPosition] += productCount;
+        }
     }
 
     private static void showMenu(String[] products, int[] prices) {
