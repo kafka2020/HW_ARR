@@ -4,8 +4,8 @@ public class Main {
         int[] prices = {100, 200, 300};
         int[] counters = new int[products.length];
 
-        showMenu();
-        dialogCustomer();
-        calcResults();
+        showMenu(products, prices);
+        dialogCustomer(counters);
+        calcResults(products, prices, counters);
     }
 }
